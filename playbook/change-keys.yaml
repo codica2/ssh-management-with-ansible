@@ -1,0 +1,21 @@
+---
+- hosts: # Set host or a pattern specified in hosts file. You can input address pool here like: [172.17.0.2]. Specify port if :22 is blocked
+  remote_user: user_name  # Choosing user to become on remote machine
+  become: true
+  vars:
+    project: ["project_name"] # Enter the project name to add to the remote host
+ 
+  tasks:
+  - name: Including keys as variables
+    include_vars:
+      file: users.yaml # Choosing file with keys 
+
+  - blockinfile:
+      marker: "#{{item.name}}"
+      block: "{{item.key}}"
+      create: yes
+      dest: /home/.tmpkeys # Temporary file is needed to format keys into authorized_keys
+      state: present
+    when: project is subset (item.projects) 
+    with_items: "{{ ssh }}"
+  - shell: cat /home/.tmpkeys | tr -d "[']" | tr ',' '\n' > /home/dev/.ssh/authorized_keys && rm /home/.tmpkeys  # Specify path to .ssh/authorized_keys
