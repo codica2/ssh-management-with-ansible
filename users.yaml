@@ -1,0 +1,10 @@
+ssh:
+  - name: user_1
+    key: ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AA/ZUuJP7XwDphF+ssgdQzIgXg5 user1.codica@gmail.com"]
+    projects: ["project1","project2"]
+  - name : user_2
+    key: ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AA/ZUuJP7XwDphF+ssgdQzIgXg5 user2.codica@gmail.com"]
+    projects: ["project1","project3"]
+  - name: user_3
+    key: ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AA/ZUuJP7XwDphF+ssgdQzIgXg5 user3.codica@gmail.com"]
+    projects: ["project3"]

@@ -1,4 +1,4 @@
-<h1 align="center">Easily in use and cost-efficient system for ssh management</h1>
+<h1 align="center">Easily in use and cost-efficient solution for ssh management</h1>
 
 ![](Ansible-ssh.jpg)
 
@@ -6,21 +6,25 @@
 ## SSH
 The **SSH** protocol is the global gold standard for remote system administration and secure file transfer. SSH (Secure Shell) is used in every data center and in every major enterprise. One of the features behind the immense popularity of the protocol is the strong authentication using SSH keys.
 
+[Documantation]('https://www.openssh.com/manual.html')
 ## Ansible
 **Ansible** is a radically simple IT automation engine that automates cloud provisioning, configuration management, application deployment, intra-service orchestration, and many other IT needs.
 
+[Documantation]('https://www.ansible.com')
+
+[Example of Ansible configuration](https://github.com/codica2/ansible-best-practice)
 ## How to use
 
-## Prerequisites
+### Prerequisites
 
-You will need:
+**You will need:**
 
 1. Remote host IP.
 2. Keys in .yaml extension.
 
-Steps to configure playbook
+**Steps to configure playbook**
 
-1. Add your IP's to hosts file.
+1. Add your IP's to [hosts file]('https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html').
 2. Add your host pattern into 'hosts' field.
 3. Enter Username into field 'remote_user'.
 4. Enter project name into field 'project'.
@@ -31,19 +35,19 @@ Steps to configure playbook
 
 
 ### Storing SSH keys
-We store keys in yaml file, each user have own ssh key and list of projects, access for what he will need
+We store keys in [user.yaml](users.yaml) file, each user have own ssh key and list of projects, access for what he will need
 
 ```yaml
-    ssh:
-     - name: user_1
-       key: ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AA/ZUuJP7XwDphF+ssgdQzIgXg5 user1.codica@gmail.com"]
-       projects: ["project1","project2"]
-     - name : user_2
-       key: ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AA/ZUuJP7XwDphF+ssgdQzIgXg5 user2.codica@gmail.com"]
-       projects: ["project1","project3"]
-     - name: user_3
-       key: ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AA/ZUuJP7XwDphF+ssgdQzIgXg5 user3.codica@gmail.com"]
-       projects: ["project3"]
+ssh:
+  - name: user_1
+    key: ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AA/ZUuJP7XwDphF+ssgdQzIgXg5 user1.codica@gmail.com"]
+    projects: ["project1","project2"]
+  - name : user_2
+    key: ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AA/ZUuJP7XwDphF+ssgdQzIgXg5 user2.codica@gmail.com"]
+    projects: ["project1","project3"]
+  - name: user_3
+    key: ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AA/ZUuJP7XwDphF+ssgdQzIgXg5 user3.codica@gmail.com"]
+    projects: ["project3"]
 
 ```
 ### Playbook for adding ssh keys
