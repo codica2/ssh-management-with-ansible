@@ -1,4 +1,4 @@
-<h1 align="center">Easily in use and cost-efficient solution for ssh management</h1>
+<h1 align="center">Easy-in-use and cost-efficient solution for SSH management</h1>
 
 ![](Ansible-ssh.jpg)
 
@@ -6,11 +6,11 @@
 ## SSH
 The **SSH** protocol is the global gold standard for remote system administration and secure file transfer. SSH (Secure Shell) is used in every data center and in every major enterprise. One of the features behind the immense popularity of the protocol is the strong authentication using SSH keys.
 
-[Documantation]('https://www.openssh.com/manual.html')
+[Documantation](https://www.openssh.com/manual.html)
 ## Ansible
 **Ansible** is a radically simple IT automation engine that automates cloud provisioning, configuration management, application deployment, intra-service orchestration, and many other IT needs.
 
-[Documantation]('https://www.ansible.com')
+[Documantation](https://www.ansible.com)
 
 [Example of Ansible configuration](https://github.com/codica2/ansible-best-practice)
 ## How to use
@@ -24,18 +24,18 @@ The **SSH** protocol is the global gold standard for remote system administratio
 
 **Steps to configure playbook**
 
-1. Add your IP's to [hosts file]('https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html').
+1. Add your IPs to [hosts file](https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html).
 2. Add your host pattern into 'hosts' field.
-3. Enter Username into field 'remote_user'.
-4. Enter project name into field 'project'.
+3. Enter Username into 'remote_user' field.
+4. Enter project name into 'project' field.
 5. Specify path to your .ssh/authorized_keys.
-6. OPTIONALLY. By default file authorized_keys will be replaced by new one, if you need to append your keys to file you need to change "tr -d "[']" >" to "tr -d "[']" >>".
+6. OPTIONALLY. By default, file authorized_keys will be replaced by new one. If you need to append your keys to file, you need to change ```tr -d "[']" >" to "tr -d "[']" >>```
 7. Shell command to ping your nodes: 'ansible -i hosts test -m ping'. # test is your hosts sub-pattern specified in hosts file [test],[aws] etc.
 8. Shell command to execute playbook: 'ansible-playbook -i hosts change-keys.yaml'.
 
 
 ### Storing SSH keys
-We store keys in [user.yaml](users.yaml) file, each user have own ssh key and list of projects, access for what he will need
+We store keys in [user.yaml](users.yaml) file, where each user has own SSH key and list of projects he will need access to. 
 
 ```yaml
 ssh:
@@ -50,7 +50,7 @@ ssh:
     projects: ["project3"]
 
 ```
-### Playbook for adding ssh keys
+### Playbook for adding SSH keys
 Our playbook will add keys of needed users to remote servers, it will rewrite existing `.ssh/authorized_keys` file, that's why we can be sure, that we store only authorized keys
 
 ```yaml
@@ -78,7 +78,7 @@ Our playbook will add keys of needed users to remote servers, it will rewrite ex
 
 ```
 
-After running this playbook, we will have `.ssh/authorized_keys` with fallowing format:
+After running this playbook, we will have `.ssh/authorized_keys` with following format:
 
 ```
 #user_1
